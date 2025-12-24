@@ -119,7 +119,12 @@ Monitors performance with Prometheus metrics
    ↓
 10. RETURN TO USER (< 500ms P99)
 
-==> Key Design Patterns Used
+==================================
+
+<=== Key Design Patterns Used ===>
+
+==================================
+
 
 1. Event-Driven Architecture
 
@@ -150,7 +155,9 @@ Monitors performance with Prometheus metrics
 4. Circuit Breaker Ready
 
 => Kafka retry with exponential backoff
+
 => Failure isolation between services
+
 => Graceful degradation if inference service down
 
 
