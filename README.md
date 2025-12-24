@@ -119,6 +119,39 @@ Monitors performance with Prometheus metrics
    ↓
 10. RETURN TO USER (< 500ms P99)
 
+==> Key Design Patterns Used
+
+1. Event-Driven Architecture
+
+=> Service A (upload) doesn't wait for Service B (inference)
+
+=> Kafka ensures no message loss
+
+=> Consumer can scale independently
+
+2. Cache-Aside Pattern
+
+=> Check Redis first
+
+=> If miss, fetch from PostgreSQL
+
+=> Update cache for future requests
+
+=>Reduces database load by 60-70%
+
+3. Async Processing
+
+=> Image upload doesn't block on classification
+
+=> User gets immediate response with status ID
+
+=> Polling or webhooks for result retrieval
+
+4. Circuit Breaker Ready
+
+=> Kafka retry with exponential backoff
+=> Failure isolation between services
+=> Graceful degradation if inference service down
 
 
 
