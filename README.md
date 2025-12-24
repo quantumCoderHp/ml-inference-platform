@@ -302,3 +302,28 @@ Response (201):
 => Response (200):
 
 "Image Service is running"
+
++++++++++++++++++++++++
+
+<=== 🔄 Data Flow ===>
+
++++++++++++++++++++++++
+
+
+1. Upload → User uploads image via REST API
+
+2. Validate → Check file type, size, format
+
+3. Store → Save metadata to PostgreSQL
+
+4. Publish → Send to Kafka topic for processing
+
+5. Process → Consumer listens on Kafka topic
+
+6. Classify → ML inference (CLIP-ready)
+
+7. Update → Save results to database
+
+8. Cache → Store in Redis for fast retrieval
+
+9. Respond → Return results to client
