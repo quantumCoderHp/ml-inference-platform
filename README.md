@@ -241,10 +241,64 @@ Documentation ------ Swagger/OpenAPI ---------- 3.0
 Container ----------- Docker ------------------- Latest
 ---------------------------------------------------
 
++++++++++++++++++++++++++++
 
+<=== 📋 API Endpoints ===>
 
++++++++++++++++++++++++++++
 
+===> Upload Image
 
+=> POST /api/v1/images/upload
 
+=> Content-Type: multipart/form-data
 
+=> Request:
 
+- file: [image file]
+
+Response (201):
+
+{
+
+  "id": 1,
+  
+  "imageUrl": "https://cdn.example.com/images/uuid-filename.jpg",
+  
+  "status": "PENDING",
+  
+  "createdAt": "2025-12-24T10:30:00"
+  
+}
+
+===> Get Image Status
+
+=> GET /api/v1/images/{id}
+
+=> Response (200):
+
+{
+
+  "id": 1,
+  
+  "imageUrl": "https://cdn.example.com/images/uuid-filename.jpg",
+  
+  "status": "COMPLETED",
+  
+  "classificationResult": "{\"class\": \"car\", ...}",
+  
+  "confidenceScore": 0.95,
+  
+  "createdAt": "2025-12-24T10:30:00",
+  
+  "updatedAt": "2025-12-24T10:30:15"
+  
+}
+
+===> Health Check
+
+=> GET /api/v1/images/health
+
+=> Response (200):
+
+"Image Service is running"
