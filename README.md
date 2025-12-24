@@ -88,6 +88,38 @@ Monitors performance with Prometheus metrics
 
 =>Metrics exposed at /actuator/prometheus
 
+ Data Flow
+
+1. USER UPLOADS IMAGE
+
+   ↓
+2. REST API VALIDATES
+
+   ↓
+3. SAVE TO DATABASE (PENDING status)
+
+   ↓
+4. PUBLISH TO KAFKA
+
+   ↓
+5. KAFKA CONSUMER RECEIVES EVENT
+
+   ↓
+6. ML INFERENCE (CLIP-Ready)
+
+   ↓
+7. PUBLISH RESULTS TO KAFKA
+
+   ↓
+8. UPDATE DATABASE (COMPLETED status)
+
+   ↓
+9. CACHE IN REDIS
+
+   ↓
+10. RETURN TO USER (< 500ms P99)
+
+
 
 
 
